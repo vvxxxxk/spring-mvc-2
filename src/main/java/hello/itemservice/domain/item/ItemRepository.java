@@ -10,8 +10,8 @@ import java.util.Map;
 @Repository
 public class ItemRepository {
 
-    private static final Map<Long, Item> store = new HashMap<>(); //static
-    private static long sequence = 0L; //static
+    private static final Map<Long, Item> store = new HashMap<>();
+    private static long sequence = 0L;
 
     public Item save(Item item) {
         item.setId(++sequence);
@@ -19,7 +19,7 @@ public class ItemRepository {
         return item;
     }
 
-    public Item findById(Long id) {
+    public Item findByID(Long id) {
         return store.get(id);
     }
 
@@ -28,7 +28,7 @@ public class ItemRepository {
     }
 
     public void update(Long itemId, Item updateParam) {
-        Item findItem = findById(itemId);
+        Item findItem = findByID(itemId);
         findItem.setItemName(updateParam.getItemName());
         findItem.setPrice(updateParam.getPrice());
         findItem.setQuantity(updateParam.getQuantity());
@@ -37,5 +37,4 @@ public class ItemRepository {
     public void clearStore() {
         store.clear();
     }
-
 }
