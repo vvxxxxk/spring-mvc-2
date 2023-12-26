@@ -22,7 +22,7 @@ public class ItemRepositoryTest {
 
         Item savedItem = itemRepository.save(item);
 
-        Item findItem = itemRepository.findByID(item.getId());
+        Item findItem = itemRepository.findById(item.getId());
         assertThat(findItem).isEqualTo(savedItem);
     }
 
@@ -48,7 +48,7 @@ public class ItemRepositoryTest {
         Item updateParam = new Item("item2", 20000, 20);
         itemRepository.update(itemId, updateParam);
 
-        Item findItem = itemRepository.findByID(itemId);
+        Item findItem = itemRepository.findById(itemId);
         assertThat(findItem.getItemName()).isEqualTo(updateParam.getItemName());
         assertThat(findItem.getPrice()).isEqualTo(updateParam.getPrice());
         assertThat(findItem.getQuantity()).isEqualTo(updateParam.getQuantity());
